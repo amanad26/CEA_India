@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:background="@drawable/textview_bg"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:paddingVertical="@dimen/_7sdp"
+        android:text="21WN reversible angora cardigan"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp" />
+
+</LinearLayout>

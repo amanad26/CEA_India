@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.cea">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/cea_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/cea_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CEA"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon"
+        tools:targetApi="31">
+        <activity
+            android:name=".co_oridinator.Activities.FaqActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Fragments.MyReferCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".co_oridinator.Activities.EditProfileActivityCodinate"
+            android:exported="false" />
+        <activity
+            android:name=".co_oridinator.Activities.SaleDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".co_oridinator.Activities.CommisionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".co_oridinator.Activities.AddSaleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_sale"
+            android:theme="@style/Theme.CEA.NoActionBar" />
+        <activity
+            android:name=".co_oridinator.Activities.Co_HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AddReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.WalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.BillingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ReviewListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.GetStartedActivityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.QrScanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Models.ViewFulImage"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.MyFavoriteListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AllProductByCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ReturnPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.TermsAndConditionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/picker_provider_paths"
+                tools:replace="android:resource" />
+        </provider> <!-- Razorpay set up -->
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@style/CheckoutTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <data
+                    android:host="rzp.io"
+                    android:scheme="io.rzp" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

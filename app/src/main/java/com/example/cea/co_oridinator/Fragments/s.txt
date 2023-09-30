@@ -1,0 +1,67 @@
+1. New Coordinator added to the system -> Coordinator logged in for the first time -> Others walking are showing in the walking screen. We need to show the individual walking to the coordinator. [Static ID 1 was entered]
+
+3. Walking -> List -> View -> Walking details are not showing [Working on my side]
+
+4. Walking -> New added walking is not showing in the list, while showing in the admin panel [Working Properly Here]
+
+5. Walking -> On clicking on the what’s app -> It is showing what’s app not installed  [Working properly here]
+
+7. Sale -> Add sale -> Payment -> Online -> Upload receipt -> Only camera option needs to show [Done]
+
+9. Sale -> List -> What is first column? Showing some number? [Its order ID. Have added Headings for better readability]
+
+10. Sale -> View -> Product serial number also need to show with product name [Done]
+
+16. Profile -> Completed -> Commission spelling needs to be correct [Done]
+
+---------------------------------------------------------Not Sure-------------------------------------------------------------
+
+17. Profile -> Commission -> Order ID showing as Invoice number [ Changed order id to commission id. Is it the invoice number. Please Check.]
+
+
+2. Profile -> Contact Us and FAQ are not opening [FAQ Api not made.]
+
+6. Sale -> Add sale -> Product search-> Products are not showing (Mean I bought 10 mobiles phone but it is showing only one and I and not able to find it by serial number) [Can't Understand]
+
+8. Sale -> View -> Payment details not showing (Image) – We need to show the payment receipt and coordinator can enlarge it [ Image url not loading in  "payment_receipt": null ]
+
+11. Sale -> Sale List -> Dispatch icon does not turn green, while item is dispatched from the admin  [Which one is the dispatch icon. Check if correct!]
+
+12. Sale -> Sale list -> Delivered status does not turn green, while item is delivered from the  [Which one is the Delivered icon. Check if correct!]
+
+
+13. To-do -> List -> Current status showing 1 while it should show not completed
+14. To -Do -> Tasks are not marked completed
+15. To -Do –> Once task is assigned it will remove from the list
+
+[ Complete To-do Api is calling and showing success but the status doesn't seems to be changing. Attached Response for api call:
+
+
+--> POST *******************************************************
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 35
+coordination_id=13&todo_assign_id=4
+--> END POST (35-byte body)
+tagSocket(116) with statsTag=0xffffffff, statsUid=-1
+<-- 200 ******************************************************* (732ms)
+server: hcdn
+date: Fri, 08 Sep 2023 18:07:12 GMT
+content-type: text/html; charset=UTF-8
+vary: Accept-Encoding
+x-powered-by: PHP/7.2.34
+access-control-allow-origin: *
+set-cookie: ci_session=b383eed0cf8bb3237a1b9583251c8fc634225620; expires=Fri, 08-Sep-2023 20:07:12 GMT; Max-Age=7200; path=/; HttpOnly; secure
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+platform: hostinger
+content-security-policy: upgrade-insecure-requests
+x-turbo-charged-by: LiteSpeed
+x-hcdn-request-id: e08d87b70f179c5ca32f4989dc3c28a2-mum-edge1
+x-hcdn-upstream-rt: 0.042
+{"status":1,"data":[{"todo_assign_id":"8","todo_id":"3","coordination_id":"13","todo_assign_status":"1","assign_date":"2023-09-07 23:21:03","finish_date":null,"created_by":"1","todo_name":"Test by amit","todo_description":"<p>Test descriptiion&nbsp;<\/p>"},{"todo_assign_id":"9","todo_id":"4","coordination_id":"13","todo_assign_status":"1","assign_date":"2023-09-08 23:33:34","finish_date":null,"created_by":"1","todo_name":"Test","todo_description":"<p>TEst<\/p>"}],"msg":"success","base_url":"https:\/\/ceaindiahub.in\/test\/"}
+
+]
+
+
+

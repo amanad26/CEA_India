@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ExploreFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:elevation="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardMaxElevation="@dimen/_8sdp">
+
+            <LinearLayout
+                android:id="@+id/search_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Search Item Here"
+                    android:inputType="text"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lighttextcolor"
+                    android:textSize="@dimen/_12sdp"
+                    app:drawableStartCompat="@drawable/ic_baseline_search_24" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/white_bg"
+            android:padding="@dimen/_10sdp">
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/sort_spinner"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/white_bg"
+                android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+                android:drawableTint="@color/colorPrimary"
+                android:padding="0dp"
+                android:text=" Sort By"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10sdp"
+                app:ms_background_color="@color/bg_grey"
+                app:ms_padding_bottom="0dp"
+                app:ms_padding_left="0dp"
+                app:ms_padding_right="0dp"
+                app:ms_padding_top="0dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:src="@drawable/baseline_menu_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@color/light_gray" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:src="@drawable/baseline_filter_alt_24"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:text="Filter"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@drawable/white_bg"
+            android:padding="@dimen/_10sdp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Search Items"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:id="@+id/text_item_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="238 Items Found"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+
+        <!-- <com.google.android.material.tabs.TabLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/white"
+             style="@style/CustomTextAppearanceTab"
+             android:id="@+id/tab_layout"/>
+
+         <androidx.viewpager2.widget.ViewPager2
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/Viewpager"/>-->
+
+        <ProgressBar
+            android:id="@+id/progresBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/text_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:text="No Data Found!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
