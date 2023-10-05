@@ -58,7 +58,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         if (models.get(position).getTodoAssignStatus().equalsIgnoreCase("2")) {
             holder.binding.actionCard.setCardBackgroundColor(context.getResources().getColor(R.color.pink_light));
         }
-        holder.binding.actionCard.setOnClickListener(view -> showWarningDialog(models.get(position).getTodoId()));
+        holder.binding.actionCard.setOnClickListener(view -> showWarningDialog(models.get(position).getTodoAssignId()));
 
     }
 

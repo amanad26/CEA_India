@@ -428,7 +428,8 @@ public interface ApiInterface {
             @Field("customer_fname") String customer_fname,
             @Field("customer_lname") String customer_lname,
             @Field("customer_mobile_no") String customer_mobile_no,
-            @Field("customer_pincode") String customer_pincode
+            @Field("customer_pincode") String customer_pincode,
+            @Field("customer_address") String customer_address
     );
 
     @FormUrlEncoded

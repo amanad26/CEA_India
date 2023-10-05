@@ -383,6 +383,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
         LinearLayout submit_linear = dialog.findViewById(R.id.submit_linear);
 
         EditText edit_address = dialog.findViewById(R.id.editPincode);
+        EditText editAddress = dialog.findViewById(R.id.editAddress);
         EditText lastName = dialog.findViewById(R.id.lastName);
         EditText edit_number = dialog.findViewById(R.id.mobileNumber);
         EditText edit_name = dialog.findViewById(R.id.editNmae);
@@ -402,6 +403,9 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
             } else if (edit_address.getText().toString().equalsIgnoreCase("")) {
                 edit_address.setError("Enter Customer Pincode.!");
                 edit_address.requestFocus();
+            }  else if (editAddress.getText().toString().equalsIgnoreCase("")) {
+                edit_address.setError("Enter Customer Address.!");
+                edit_address.requestFocus();
             } else {
                 pd.show();
                 dialog.dismiss();
@@ -410,7 +414,8 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                         edit_name.getText().toString(),
                         lastName.getText().toString(),
                         edit_number.getText().toString(),
-                        edit_address.getText().toString()
+                        edit_address.getText().toString(),
+                        editAddress.getText().toString()
                 ).enqueue(new Callback<AddCustomerModel>() {
                     @Override
                     public void onResponse(@NonNull Call<AddCustomerModel> call, @NonNull Response<AddCustomerModel> response) {
