@@ -55,9 +55,17 @@ public class SakeProductAdapterMain extends RecyclerView.Adapter<SakeProductAdap
         holder.binding.productMRP.setText(models.get(position).getProductMrp());
         holder.binding.productTotal.setText(models.get(position).getProductFinalAmount());
         holder.binding.productDiscount.setText(models.get(position).getProductDiscount());
+        holder.binding.productOffer.setText(models.get(position).getProduct_offer());
 
+        if (!models.get(position).getProduct_offer().equalsIgnoreCase("0")) {
+            float price = Float.parseFloat(models.get(position).getProductFinalAmount());
+            price = price - Float.parseFloat(models.get(position).getProduct_offer());
+            models.get(position).setOriginalPrice(String.valueOf(price));
+        } else {
+            models.get(position).setOriginalPrice(models.get(position).getProductFinalAmount());
+        }
 
-        models.get(position).setOriginalPrice(models.get(position).getProductFinalAmount());
+//        models.get(position).setOriginalPrice(models.get(position).getProductFinalAmount());
         holder.binding.productDiscount.setOnClickListener(view -> updateDiscount(models.get(position).getProductMaxDiscount(), position, holder));
 
 

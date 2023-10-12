@@ -146,6 +146,9 @@ public class ProductModelCo {
         @SerializedName("product_image")
         @Expose
         private String product_image;
+        @SerializedName("product_offer")
+        @Expose
+        private String product_offer;
         @SerializedName("common_status")
         @Expose
         private String commonStatus;
@@ -301,6 +304,15 @@ public class ProductModelCo {
         private String specificationName;
 
         private String productDiscount = null;
+
+        public String getProduct_offer() {
+            return product_offer;
+        }
+
+        public void setProduct_offer(String product_offer) {
+            this.product_offer = product_offer;
+        }
+
         public String getOriginalPrice() {
             return originalPrice;
         }

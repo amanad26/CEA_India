@@ -1,6 +1,7 @@
 package com.example.cea.Apis;
 
 public class BaseUrls {
+    public  static  String APPID = "8" ;
     public static final String RazorPayKey = "rzp_test_W7bnxjP4xqCYzS";
 
     public static final String URL = "https://ceaindiahub.in/test/webservice/api/";

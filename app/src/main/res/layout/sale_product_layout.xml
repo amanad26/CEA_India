@@ -67,6 +67,24 @@
             android:layout_height="match_parent"
             android:background="@color/view_color" />
 
+        <TextView
+            android:id="@+id/productOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Offer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9sdp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_width=".5dp"
+            android:layout_height="match_parent"
+            android:background="@color/view_color" />
+
         <EditText
             android:id="@+id/productDiscount"
             android:layout_width="match_parent"

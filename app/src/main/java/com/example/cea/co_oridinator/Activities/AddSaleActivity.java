@@ -109,7 +109,6 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                     .compress(1024)            //Final image size will be less than 1 MB(Optional)
                     .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
                     .start(gallery_req_code);
-
 //            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
 //            i.setType("image/*");
 //            startActivityForResult(i, gallery_req_code);
@@ -165,6 +164,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
             text = text + "\"" + "sale_qty" + "\"" + ":" + "\"" + "1" + "\"" + ",";
             text = text + "\"" + "product_final_amount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductFinalAmount() + "\"" + ",";
             text = text + "\"" + "product_discount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductDiscount() + "\"" + ",";
+            text = text + "\"" + "offer_price" + "\"" + ":" + "\"" + selectedProduct.get(i).getProduct_offer() + "\"" + ",";
             text = text + "\"" + "order_amount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductFinalAmount() + "\"" + "}";
 
             if (i != selectedProduct.size() - 1)
@@ -324,7 +324,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                     session.getUserId(),
                     selectedPaymentMode,
                     "",
-                   "",
+                    "",
                     "",
                     "",
                     "",
@@ -403,7 +403,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
             } else if (edit_address.getText().toString().equalsIgnoreCase("")) {
                 edit_address.setError("Enter Customer Pincode.!");
                 edit_address.requestFocus();
-            }  else if (editAddress.getText().toString().equalsIgnoreCase("")) {
+            } else if (editAddress.getText().toString().equalsIgnoreCase("")) {
                 edit_address.setError("Enter Customer Address.!");
                 edit_address.requestFocus();
             } else {
@@ -815,13 +815,22 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
         if (selectedProduct.size() != 0) {
             float finalPrice = 0;
             float discount = 0;
+            float toalOfferPrice = 0;
+
             for (int i = 0; i < selectedProduct.size(); i++) {
                 float price = Float.parseFloat(selectedProduct.get(i).getProductFinalAmount());
                 if (selectedProduct.get(i).getProductDiscount() != null) {
                     float dis = Float.parseFloat(selectedProduct.get(i).getProductDiscount());
                     discount = discount + dis;
                 }
+
                 finalPrice = finalPrice + price;
+
+                if (!selectedProduct.get(i).getProduct_offer().equalsIgnoreCase("0")) {
+                    float off = Float.parseFloat(selectedProduct.get(i).getProduct_offer());
+                    finalPrice = finalPrice - off;
+                    discount = discount + off;
+                }
 
             }
 

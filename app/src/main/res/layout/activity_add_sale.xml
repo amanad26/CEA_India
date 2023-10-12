@@ -574,7 +574,7 @@
                 android:gravity="start"
                 android:text="Product Name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_8sdp" />
 
             <View
                 android:layout_width=".5dp"
@@ -591,7 +591,7 @@
                 android:gravity="center"
                 android:text="MOP"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_8sdp" />
 
             <View
                 android:layout_width=".5dp"
@@ -607,7 +607,23 @@
                 android:gravity="center"
                 android:text="MRP"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_8sdp" />
+
+            <View
+                android:layout_width=".5dp"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="Offer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8sdp" />
 
             <View
                 android:layout_width=".5dp"
@@ -623,7 +639,7 @@
                 android:gravity="center"
                 android:text="Discount "
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_8sdp" />
 
             <View
                 android:layout_width=".5dp"
@@ -639,7 +655,7 @@
                 android:gravity="center"
                 android:text="Total"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_8sdp" />
 
         </LinearLayout>
 

@@ -76,6 +76,7 @@ import com.example.cea.co_oridinator.Models.AddCustomerModel;
 import com.example.cea.co_oridinator.Models.AddFollowUpModel;
 import com.example.cea.co_oridinator.Models.AddSaleModel;
 import com.example.cea.co_oridinator.Models.AddWallkingCustomerModel;
+import com.example.cea.co_oridinator.Models.AppLockModel;
 import com.example.cea.co_oridinator.Models.Co_LoginModel;
 import com.example.cea.co_oridinator.Models.CommisionModel;
 import com.example.cea.co_oridinator.Models.GetWallkingModel;
@@ -514,5 +515,12 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST(firmWiseInvoice)
     Call<InvoiceListModel> getFirmInvoice(@Field("sale_id") String sale_id);
+
+
+    @FormUrlEncoded
+    @POST("app_block.php")
+    Call<AppLockModel> checkApp(@Field("id") String id);
+
+
 
 }
