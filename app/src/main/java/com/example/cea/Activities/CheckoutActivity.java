@@ -127,27 +127,32 @@ public class CheckoutActivity extends AppCompatActivity implements RefreshCart {
                                     float a = Float.parseFloat(response.body().getData().get(i).getProductFinalAmount());
                                     float q = Float.parseFloat(response.body().getData().get(i).getProductQty());
                                     float t = Float.parseFloat(response.body().getData().get(i).getProductTaxAmount());
-                                    float p = a * q;
+                                    float p ;
+//                                    float p = a * q;
 
                                     totalTax  = totalTax + t ;
 
-                                    totalAmountNew = totalAmount + Float.parseFloat(response.body().getData().get(i).getProductFinalAmount());
+                                    // totalAmountNew = totalAmount + Float.parseFloat(response.body().getData().get(i).getProductFinalAmount());
+                                    p =  Float.parseFloat(response.body().getData().get(i).getProductFinalAmount());
                                     Log.e("TAG", "onResponse:  Original Price " + i + +p + " q " + q);
                                     if (response.body().getData().get(i).getProductOffer() != null) {
 
                                         float amount = Float.parseFloat(response.body().getData().get(i).getProductOffer().getOfferAmount());
 
-                                        if (response.body().getData().get(i).getProductOffer().getOfferType().equalsIgnoreCase("Percentage")) {
+                                        if (response.body().getData().get(i).getProductOffer().getOfferType().equalsIgnoreCase("Fixed")) {
+                                            amount = amount * q;
+                                            p = p - amount;
+                                        } else {
                                             float price = p * amount;
                                             price = price / 100;
                                             p = p - price;
                                             Log.e("TAG", "onResponse: Price pos  " + i + "  " + price);
-                                        } else {
-                                            amount = amount * q;
-                                            p = p - amount;
+
+
                                         }
                                     }
 
+                                    totalAmountNew = totalAmountNew + p ;
                                     totalAmount = totalAmount + p;
                                 }
 

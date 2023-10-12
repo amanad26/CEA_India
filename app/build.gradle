@@ -121,4 +121,7 @@ dependencies {
     implementation 'com.github.leoncydsilva:SearchableSpinner:1.0.1'
     implementation 'com.github.dhaval2404:imagepicker:2.1'
 
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+
+
 }

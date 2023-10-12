@@ -19,14 +19,19 @@
     <!--        android:layout_alignParentBottom="true"-->
     <!--        app:menu="@menu/bottom_nav_menu" />-->
 
+<!--    <com.budiyev.android.codescanner.CodeScannerView-->
+<!--        android:id="@+id/scanner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:frameCornersSize="32dp"-->
+<!--        app:frameCornersRadius="8dp"-->
+<!--        app:frameCornersCapRounded="true"-->
+<!--        app:frameVerticalBias="0.35">-->
+<!--    </com.budiyev.android.codescanner.CodeScannerView>-->
+
     <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner"
+        android:id="@+id/scanner_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:frameCornersSize="32dp"
-        app:frameCornersRadius="8dp"
-        app:frameCornersCapRounded="true"
-        app:frameVerticalBias="0.35">
-    </com.budiyev.android.codescanner.CodeScannerView>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

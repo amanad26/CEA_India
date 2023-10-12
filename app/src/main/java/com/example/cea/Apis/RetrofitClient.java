@@ -65,7 +65,9 @@ public class RetrofitClient {
 
         ApiInterface apiInterface ;
         apiInterface = RETRFIT.create(ApiInterface.class);
+        RETRFIT = null;
         return  apiInterface;
+
 
     }
 

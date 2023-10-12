@@ -170,8 +170,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isValidate() {
 
-        if (binding.edtPhone.getText().toString().equalsIgnoreCase("")) {
-            binding.edtPhone.setError("Enter your mobile.!");
+        if (binding.edtPhone.getText().toString().equalsIgnoreCase("") && binding.edtPhone.getText().toString().length() < 10) {
+            binding.edtPhone.setError("Enter your 10 digits mobile.!");
             binding.edtPhone.requestFocus();
             return false;
         } else if (binding.edtPassword.getText().toString().equalsIgnoreCase("")) {

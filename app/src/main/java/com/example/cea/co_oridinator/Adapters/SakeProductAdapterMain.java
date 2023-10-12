@@ -52,7 +52,8 @@ public class SakeProductAdapterMain extends RecyclerView.Adapter<SakeProductAdap
 
         holder.binding.productName.setText(models.get(position).getProductName());
         holder.binding.productMOP.setText(models.get(position).getProductMop());
-        holder.binding.productMRP.setText(models.get(position).getProductMrp());
+        holder.binding.productMRP.setText(models.get(position).getProductFinalAmount());
+//        holder.binding.productMRP.setText(models.get(position).getProductPrice());
         holder.binding.productTotal.setText(models.get(position).getProductFinalAmount());
         holder.binding.productDiscount.setText(models.get(position).getProductDiscount());
         holder.binding.productOffer.setText(models.get(position).getProduct_offer());

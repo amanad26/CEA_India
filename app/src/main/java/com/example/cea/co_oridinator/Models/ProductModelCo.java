@@ -128,6 +128,7 @@ public class ProductModelCo {
 
         public String getProductMrp() {
             return productMrp;
+            
         }
 
         public void setProductMrp(String productMrp) {
@@ -148,7 +149,7 @@ public class ProductModelCo {
         private String product_image;
         @SerializedName("product_offer")
         @Expose
-        private String product_offer;
+        private String product_offer = "0";
         @SerializedName("common_status")
         @Expose
         private String commonStatus;

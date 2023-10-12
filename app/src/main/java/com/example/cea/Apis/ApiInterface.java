@@ -9,6 +9,7 @@ import static com.example.cea.Apis.BaseUrls.addToCart;
 import static com.example.cea.Apis.BaseUrls.cartList;
 import static com.example.cea.Apis.BaseUrls.categoryList;
 import static com.example.cea.Apis.BaseUrls.changePassword;
+import static com.example.cea.Apis.BaseUrls.checkCartProduct;
 import static com.example.cea.Apis.BaseUrls.checkMobileEmailAddress;
 import static com.example.cea.Apis.BaseUrls.checkoutList;
 import static com.example.cea.Apis.BaseUrls.checkoutProductList;
@@ -54,6 +55,7 @@ import com.example.cea.Models.AddReviewModel;
 import com.example.cea.Models.BannerModel;
 import com.example.cea.Models.CartListModel;
 import com.example.cea.Models.CategoryModel;
+import com.example.cea.Models.CheckCartModel;
 import com.example.cea.Models.CheckoutModel;
 import com.example.cea.Models.FavoriteListModel;
 import com.example.cea.Models.FavoriteModel;
@@ -250,6 +252,15 @@ public interface ApiInterface {
             @Field("product_final_amount") String product_final_amount,
             @Field("product_mop") String product_mop,
             @Field("customer_pincode") String customer_pincode
+    );
+
+
+    @FormUrlEncoded
+    @POST(checkCartProduct)
+    Call<CheckCartModel> checkCartProduct(
+            @Field("customer_id") String customer_id,
+            @Field("product_id") String product_id,
+            @Field("specification_id") String specification_id
     );
 
 
@@ -491,19 +502,18 @@ public interface ApiInterface {
     );
 
 
-
     @Multipart
     @POST(addCoordinationSale)
     Call<AddSaleModel> addSaleWithFile(
-            @Part MultipartBody.Part payment_receipt_url ,
-            @Part("customer_id") String  customer_id ,
-            @Part("total_sale_qty") String  total_sale_qty ,
-            @Part("total_order_amount") String  total_order_amount ,
-            @Part("pay_amount") String  pay_amount ,
-            @Part("total_discount") String  total_discount ,
-            @Part("coordination_id") String  coordination_id ,
-            @Part("payment_type") String  payment_type ,
-            @Part("products") String  products,
+            @Part MultipartBody.Part payment_receipt_url,
+            @Part("customer_id") String customer_id,
+            @Part("total_sale_qty") String total_sale_qty,
+            @Part("total_order_amount") String total_order_amount,
+            @Part("pay_amount") String pay_amount,
+            @Part("total_discount") String total_discount,
+            @Part("coordination_id") String coordination_id,
+            @Part("payment_type") String payment_type,
+            @Part("products") String products,
             @Part("bank_name") String bank_name,
             @Part("bank_ifsc_code") String bank_ifsc_code,
             @Part("bank_branch") String bank_branch,
@@ -520,7 +530,6 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("app_block.php")
     Call<AppLockModel> checkApp(@Field("id") String id);
-
 
 
 }

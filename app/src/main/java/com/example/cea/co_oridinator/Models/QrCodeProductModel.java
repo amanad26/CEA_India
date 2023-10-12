@@ -6,12 +6,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class QrCodeProductModel {
+
+
     @SerializedName("status")
     @Expose
     private Integer status;
     @SerializedName("data")
     @Expose
-    private Datum data;
+    private List<Datum> data;
     @SerializedName("msg")
     @Expose
     private String msg;
@@ -27,11 +29,11 @@ public class QrCodeProductModel {
         this.status = status;
     }
 
-    public Datum getData() {
+    public List<Datum> getData() {
         return data;
     }
 
-    public void setData(Datum data) {
+    public void setData(List<Datum> data) {
         this.data = data;
     }
 
@@ -67,22 +69,22 @@ public class QrCodeProductModel {
         private String commonStatus;
         @SerializedName("purchase_status")
         @Expose
-        private Object purchaseStatus;
+        private String purchaseStatus;
         @SerializedName("store_status")
         @Expose
-        private Object storeStatus;
+        private String storeStatus;
         @SerializedName("stock_created_date")
         @Expose
         private String stockCreatedDate;
         @SerializedName("purchase_return_date")
         @Expose
-        private Object purchaseReturnDate;
+        private String purchaseReturnDate;
         @SerializedName("store_assign_date")
         @Expose
-        private Object storeAssignDate;
+        private String storeAssignDate;
         @SerializedName("store_return_date")
         @Expose
-        private Object storeReturnDate;
+        private String storeReturnDate;
         @SerializedName("sale_created_date")
         @Expose
         private String saleCreatedDate;
@@ -151,7 +153,7 @@ public class QrCodeProductModel {
         private String productSpecification;
         @SerializedName("product_services")
         @Expose
-        private Object productServices;
+        private String productServices;
         @SerializedName("product_tax")
         @Expose
         private String productTax;
@@ -212,11 +214,23 @@ public class QrCodeProductModel {
         @SerializedName("product_final_amount")
         @Expose
         private String productFinalAmount;
+        @SerializedName("product_offer")
+        @Expose
+        private String productOffer;
+
         @SerializedName("specification_name")
         @Expose
         private String specificationName;
 
         private String productDiscount = "0";
+
+        public String getSpecificationName() {
+            return specificationName;
+        }
+
+        public void setSpecificationName(String specificationName) {
+            this.specificationName = specificationName;
+        }
 
         public String getProductDiscount() {
             return productDiscount;
@@ -258,19 +272,19 @@ public class QrCodeProductModel {
             this.commonStatus = commonStatus;
         }
 
-        public Object getPurchaseStatus() {
+        public String getPurchaseStatus() {
             return purchaseStatus;
         }
 
-        public void setPurchaseStatus(Object purchaseStatus) {
+        public void setPurchaseStatus(String purchaseStatus) {
             this.purchaseStatus = purchaseStatus;
         }
 
-        public Object getStoreStatus() {
+        public String getStoreStatus() {
             return storeStatus;
         }
 
-        public void setStoreStatus(Object storeStatus) {
+        public void setStoreStatus(String storeStatus) {
             this.storeStatus = storeStatus;
         }
 
@@ -282,27 +296,27 @@ public class QrCodeProductModel {
             this.stockCreatedDate = stockCreatedDate;
         }
 
-        public Object getPurchaseReturnDate() {
+        public String getPurchaseReturnDate() {
             return purchaseReturnDate;
         }
 
-        public void setPurchaseReturnDate(Object purchaseReturnDate) {
+        public void setPurchaseReturnDate(String purchaseReturnDate) {
             this.purchaseReturnDate = purchaseReturnDate;
         }
 
-        public Object getStoreAssignDate() {
+        public String getStoreAssignDate() {
             return storeAssignDate;
         }
 
-        public void setStoreAssignDate(Object storeAssignDate) {
+        public void setStoreAssignDate(String storeAssignDate) {
             this.storeAssignDate = storeAssignDate;
         }
 
-        public Object getStoreReturnDate() {
+        public String getStoreReturnDate() {
             return storeReturnDate;
         }
 
-        public void setStoreReturnDate(Object storeReturnDate) {
+        public void setStoreReturnDate(String storeReturnDate) {
             this.storeReturnDate = storeReturnDate;
         }
 
@@ -482,11 +496,11 @@ public class QrCodeProductModel {
             this.productSpecification = productSpecification;
         }
 
-        public Object getProductServices() {
+        public String getProductServices() {
             return productServices;
         }
 
-        public void setProductServices(Object productServices) {
+        public void setProductServices(String productServices) {
             this.productServices = productServices;
         }
 
@@ -650,13 +664,15 @@ public class QrCodeProductModel {
             this.productFinalAmount = productFinalAmount;
         }
 
-        public String getSpecificationName() {
-            return specificationName;
+        public String getProductOffer() {
+            return productOffer;
         }
 
-        public void setSpecificationName(String specificationName) {
-            this.specificationName = specificationName;
+        public void setProductOffer(String productOffer) {
+            this.productOffer = productOffer;
         }
 
     }
+
+
 }

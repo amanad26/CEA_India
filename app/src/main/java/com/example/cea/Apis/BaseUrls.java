@@ -4,8 +4,14 @@ public class BaseUrls {
     public  static  String APPID = "8" ;
     public static final String RazorPayKey = "rzp_test_W7bnxjP4xqCYzS";
 
-    public static final String URL = "https://ceaindiahub.in/test/webservice/api/";
-    public static final String ImageBaseUrl = "https://ceaindiahub.in/test/";
+
+    //Octa
+    public static final String URL = "https://ceaindiahub.in/octa/webservice/api/";
+    public static final String ImageBaseUrl = "https://ceaindiahub.in/octa/";
+
+    //Test
+//    public static final String URL = "https://ceaindiahub.in/test/webservice/api/";
+//    public static final String ImageBaseUrl = "https://ceaindiahub.in/test/";
     public static final String login = "login";
     public static final String signup = "signup";
     public static final String checkMobileEmailAddress = "checkMobileEmailAddress";
@@ -58,5 +64,6 @@ public class BaseUrls {
     public static final String updateCoordinationProfile = "updateCoordinationProfile";
     public static final String todayFollowup = "todayFollowup";
     public static final String firmWiseInvoice = "firmWiseInvoice";
+    public static final String checkCartProduct = "checkCartProduct";
 
 }

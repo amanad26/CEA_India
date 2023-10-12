@@ -64,7 +64,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
         holder.binding.productQuantity.setText(models.get(position).getProductQty());
 
         holder.binding.checkoutLinear.setVisibility(View.VISIBLE);
-        holder.binding.netAmount.setText(models.get(position).getProductSalePrice() + " x " + models.get(position).getProductQty());
+       // holder.binding.netAmount.setText(models.get(position).getProductSalePrice() + " x " + models.get(position).getProductQty());
         holder.binding.tax.setText(models.get(position).getProductTax() + " % ");
 
         if (isNot) {
@@ -80,7 +80,8 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
 
             float finalPrice = p * q;
 
-            holder.binding.netTotalAmount.setText(String.valueOf(finalPrice));
+            holder.binding.netAmount.setText(models.get(position).getSingle_product_price() + " * "+models.get(position).getProductQty());
+            holder.binding.netTotalAmount.setText(models.get(position).getProductFinalAmount());
 
             if (models.get(position).getProductOffer() != null) {
 
@@ -99,10 +100,25 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
                 float amount = Float.parseFloat(models.get(position).getProductOffer().getOfferAmount());
                 // amount = amount * q;
 
-                if (models.get(position).getProductOffer().getOfferType().equalsIgnoreCase("Percentage")) {
+                if (models.get(position).getProductOffer().getOfferType().equalsIgnoreCase("Fixed")) {
+
+                    holder.binding.offerAmount.setText(models.get(position).getProductOffer().getOfferAmount() + "");
+
+                    finalPrice = finalPrice - amount * q;
+                    holder.binding.afterOfferAmount.setText("- " + amount * q);
+
+                    try {
+                        float pr = Float.parseFloat(models.get(position).getProductFinalAmount());
+                        float oa = Float.parseFloat(models.get(position).getProductOffer().getOfferAmount());
+                        float quantity = Float.parseFloat(models.get(position).getProductQty());
+                        float am = pr - (oa*quantity);
+                        holder.binding.totalAmount.setText(String.valueOf(am));
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
 
                     holder.binding.offerAmount.setText(models.get(position).getProductOffer().getOfferAmount() + " %");
-
 
                     float price = finalPrice * amount;
                     price = price / 100;
@@ -110,12 +126,17 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
                     BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
                     holder.binding.afterOfferAmount.setText("- " + String.valueOf(bd.floatValue()));
 
+                    try {
+                        float pr = Float.parseFloat(models.get(position).getProductFinalAmount());
+                        float oa = Float.parseFloat(models.get(position).getProductOffer().getOfferAmount());
+                        float quantity = Float.parseFloat(models.get(position).getProductQty());
+                        float am = pr - (oa*quantity);
+                        holder.binding.totalAmount.setText(String.valueOf(am));
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
 
-                } else {
-                    holder.binding.offerAmount.setText(models.get(position).getProductOffer().getOfferAmount() + " %");
 
-                    finalPrice = finalPrice - amount * q;
-                    holder.binding.afterOfferAmount.setText("- " + amount * q);
                 }
 
                 tax = finalPrice * 18;
@@ -130,7 +151,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
             BigDecimal bdPrice = new BigDecimal(finalPrice + tax).setScale(2, RoundingMode.HALF_UP);
 
             holder.binding.totalTax.setText(String.valueOf(bd.floatValue()));
-            holder.binding.totalAmount.setText(String.valueOf(bdPrice.floatValue()));
+           // holder.binding.totalAmount.setText(String.valueOf(bdPrice.floatValue()));
 
         } catch (NumberFormatException e) {
             e.printStackTrace();

@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
+import com.budiyev.android.codescanner.DecodeCallback;
+import com.budiyev.android.codescanner.ErrorCallback;
+import com.budiyev.android.codescanner.ScanMode;
 import com.example.cea.Apis.RetrofitClient;
 import com.example.cea.R;
 import com.example.cea.Utills.ProgressDialog;
@@ -22,6 +25,7 @@ import com.example.cea.co_oridinator.Activities.AddSaleActivity;
 import com.example.cea.co_oridinator.Models.ProductModelCo;
 import com.example.cea.co_oridinator.Models.QrCodeProductModel;
 import com.example.cea.databinding.ActivityQrScanBinding;
+import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -36,6 +40,7 @@ import retrofit2.Response;
 public class QrScanActivity extends AppCompatActivity {
     private Activity activity;
     private ActivityQrScanBinding binding;
+    CodeScanner codeScanner ;
     String activityString = "";
     public static String qrFinalCode = "";
 
@@ -52,7 +57,8 @@ public class QrScanActivity extends AppCompatActivity {
 //                && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
 //                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         ) {
-            setQr();
+           // setQr();
+            setOr2();
         } else
             Dexter.withContext(this)
                     .withPermissions(
@@ -60,7 +66,8 @@ public class QrScanActivity extends AppCompatActivity {
                     ).withListener(new MultiplePermissionsListener() {
                         @Override
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
-                            setQr();
+//                            setQr();
+                            setOr2();
                         }
 
                         @Override
@@ -71,8 +78,50 @@ public class QrScanActivity extends AppCompatActivity {
                     }).check();
     }
 
-    private CodeScanner mCodeScanner;
+    private void setOr2() {
+        codeScanner = new CodeScanner(activity, binding.scannerView);
+        codeScanner.setCamera(CodeScanner.CAMERA_BACK);
+        codeScanner.setFormats(CodeScanner.ALL_FORMATS);
+        codeScanner.setScanMode(ScanMode.SINGLE);
 
+//        codeScanner.startPreview();
+        codeScanner.setDecodeCallback(new DecodeCallback() {
+            @Override
+            public void onDecoded(@NonNull Result result) {
+                Log.e("TAG", "onDecoded: Text of code is "+result.getText().trim() );
+                if (activityString.equalsIgnoreCase("0")) {
+                    // startActivity(new Intent(activity, HomeActivity.class).putExtra("result", result.getText().trim()));
+                    String key = result.getText().trim();
+                    getProductByQrCode(key);
+                    Log.e("TAG", "onDecoded: On Scan If part " );
+                    //finish();
+                } else if (activityString.equalsIgnoreCase("2")) {
+                    qrFinalCode = result.getText().toString().trim();
+                    Log.e("TAG", "onDecoded: On Scan else If part " );
+                    finish();
+                } else {
+                    Intent resultIntent = new Intent(activity, AddSaleActivity.class);
+                    resultIntent.putExtra("resultKey", result.getText().trim());
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    Log.e("TAG", "onDecoded: On Scan else part " );
+                    finish();
+                }
+            }
+        });
+
+        codeScanner.setErrorCallback(new ErrorCallback() {
+            @Override
+            public void onError(@NonNull Throwable thrown) {
+                Log.e("TAG", "onError: On Error "+thrown.toString() );
+            }
+        });
+
+
+
+    }
+
+    private CodeScanner mCodeScanner;
+/*
     private void setQr() {
         CodeScannerView scannerView = findViewById(R.id.scanner);
         mCodeScanner = new CodeScanner(this, scannerView);
@@ -98,7 +147,7 @@ public class QrScanActivity extends AppCompatActivity {
         }));
 
         scannerView.setOnClickListener(view -> mCodeScanner.startPreview());
-    }
+    }*/
 
     private void getProductByQrCode(String code) {
         ProgressDialog pd = new ProgressDialog(activity);
@@ -110,7 +159,7 @@ public class QrScanActivity extends AppCompatActivity {
                 if (response.code() == 200)
                     if (response.body() != null)
                         if (response.body().getStatus() == 1) {
-                            String pId = response.body().getData().getProductId();
+                            String pId = response.body().getData().get(0).getProductId();
                             startActivity(new Intent(activity, ProductDetailsActivity.class)
                                     .putExtra("pro_id", pId));
                             finish();
@@ -132,13 +181,15 @@ public class QrScanActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mCodeScanner.startPreview();
+      //  mCodeScanner.startPreview();
+        codeScanner.startPreview();
     }
 
 
     @Override
     protected void onPause() {
-        mCodeScanner.releaseResources();
+       // mCodeScanner.releaseResources();
         super.onPause();
+        codeScanner.releaseResources();
     }
 }

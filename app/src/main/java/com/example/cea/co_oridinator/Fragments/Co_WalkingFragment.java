@@ -414,7 +414,7 @@ public class Co_WalkingFragment extends Fragment implements OnItemDelete {
                 if (response.code() == 200)
                     if (response.body() != null)
                         if (response.body().getStatus() == 1) {
-                            QrCodeProductModel.Datum data2 = response.body().getData();
+                            QrCodeProductModel.Datum data2 = response.body().getData().get(0);
                             ProductModelCo.Datum data = new ProductModelCo.Datum(
                                     data2.getStockId(),
                                     data2.getFirmId(),

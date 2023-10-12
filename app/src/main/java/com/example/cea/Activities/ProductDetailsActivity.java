@@ -22,6 +22,8 @@ import com.example.cea.Apis.ApiInterface;
 import com.example.cea.Apis.MyCarListInterface;
 import com.example.cea.Apis.RetrofitClient;
 import com.example.cea.Models.AddCartModel;
+import com.example.cea.Models.CartListModel;
+import com.example.cea.Models.CheckCartModel;
 import com.example.cea.Models.ProductDetailsModel;
 import com.example.cea.Models.ReviewListModel;
 import com.example.cea.Models.UpdateProfileModel;
@@ -98,8 +100,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements MyCarLi
             if (session.sharedPreferences.contains("user_id")) {
                 if (selectedSpecificationID.equalsIgnoreCase(""))
                     Toast.makeText(activity, "Select Specification", Toast.LENGTH_SHORT).show();
-                else addToCart(false);
-            }else {
+                else checkCartProduct();
+            } else {
                 Toast.makeText(activity, "Please Login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(activity, LoginActivity.class));
                 finish();
@@ -115,13 +117,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements MyCarLi
                 if (selectedSpecificationID.equalsIgnoreCase(""))
                     Toast.makeText(activity, "Select Specification", Toast.LENGTH_SHORT).show();
                 else addToCart(true);
-            }else {
+            } else {
                 Toast.makeText(activity, "Please Login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(activity, LoginActivity.class));
                 finish();
             }
-
-
 
 
         });
@@ -129,6 +129,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements MyCarLi
     }
 
     private void addToCart(boolean isBuy) {
+
         apiInterface.addToCart(
                 session.getUserId(),
                 productId,
@@ -163,6 +164,61 @@ public class ProductDetailsActivity extends AppCompatActivity implements MyCarLi
             }
         });
 
+
+    }
+
+    private void checkCartProduct() {
+
+        RetrofitClient.getClient(activity).checkCartProduct(
+                session.getUserId(),
+                productId,
+                specificationId
+        ).enqueue(new Callback<CheckCartModel>() {
+            @Override
+            public void onResponse(@NonNull Call<CheckCartModel> call, @NonNull Response<CheckCartModel> response) {
+                if (response.code() == 200)
+                    if (response.body() != null)
+                        if (response.body().getStatus() == 1) {
+                            int q = Integer.parseInt(response.body().getData().getProductQty());
+                            q++;
+                            updateCart(q, response.body().getData().getCartId());
+                            //Toast.makeText(activity, "Already Added into cart", Toast.LENGTH_SHORT).show();
+                        } else {
+                            addToCart(false);
+                        }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<CheckCartModel> call, @NonNull Throwable t) {
+
+            }
+        });
+
+
+    }
+
+
+    private void updateCart(int q, String cartId) {
+
+        RetrofitClient.getClient(activity).updateCart(
+                cartId,
+                String.valueOf(q),
+                session.getPincode()
+        ).enqueue(new Callback<CartListModel>() {
+            @Override
+            public void onResponse(@NonNull Call<CartListModel> call, @NonNull Response<CartListModel> response) {
+                if (response.code() == 200)
+                    if (response.body() != null)
+                        if (response.body().getStatus() == 1) {
+                            Toast.makeText(activity, "Added into cart", Toast.LENGTH_SHORT).show();
+                        }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<CartListModel> call, @NonNull Throwable t) {
+
+            }
+        });
 
     }
 
@@ -325,10 +381,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements MyCarLi
                             // binding.productSubType.setText(productData.getProductSubType());
                             binding.sCDescription.setText(Html.fromHtml(productData.getProductDescription()));
                             binding.price.setText(productData.getProductFinalAmount());
-                            binding.catName.setText("Category : "+productData.getCategory_name());
+                            binding.catName.setText("Category : " + productData.getCategory_name());
 
                             binding.productMrp.setText(Html.fromHtml("<strike> MOP " + productData.getProductMop() + "</strike>"));
-                           // binding.ratingCount.setText(productData.getTotalStarCount() + " Ratings");
+                            // binding.ratingCount.setText(productData.getTotalStarCount() + " Ratings");
 
                             if (productData.getProductOffer() != null) {
                                 if (productData.getProductOffer().getOfferType().equalsIgnoreCase("Percentage"))

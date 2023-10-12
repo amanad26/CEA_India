@@ -60,7 +60,6 @@ import retrofit2.Response;
 
 public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpinnerInterface {
 
-
     ActivityAddSaleBinding binding;
     Activity activity;
     ProgressDialog pd;
@@ -162,7 +161,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
 
             text = text + "\"" + "stock_id" + "\"" + ":" + "\"" + selectedProduct.get(i).getStockId() + "\"" + ",";
             text = text + "\"" + "sale_qty" + "\"" + ":" + "\"" + "1" + "\"" + ",";
-            text = text + "\"" + "product_final_amount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductFinalAmount() + "\"" + ",";
+            text = text + "\"" + "product_final_amount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductMrp() + "\"" + ",";
             text = text + "\"" + "product_discount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductDiscount() + "\"" + ",";
             text = text + "\"" + "offer_price" + "\"" + ":" + "\"" + selectedProduct.get(i).getProduct_offer() + "\"" + ",";
             text = text + "\"" + "order_amount" + "\"" + ":" + "\"" + selectedProduct.get(i).getProductFinalAmount() + "\"" + "}";
@@ -718,7 +717,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                 if (response.code() == 200)
                     if (response.body() != null)
                         if (response.body().getStatus() == 1) {
-                            QrCodeProductModel.Datum data2 = response.body().getData();
+                            QrCodeProductModel.Datum data2 = response.body().getData().get(0);
                             ProductModelCo.Datum data = new ProductModelCo.Datum(
                                     data2.getStockId(),
                                     data2.getFirmId(),
@@ -802,6 +801,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
 
             @Override
             public void onFailure(@NonNull Call<QrCodeProductModel> call, @NonNull Throwable t) {
+                Log.e("TAG", "onFailure: Error "+t.toString() );
                 Toast.makeText(activity, "Failed...", Toast.LENGTH_SHORT).show();
                 pd.dismiss();
             }
@@ -864,6 +864,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
             if (data != null) {
 //             getProductByQrCode("16916643662");
                 getProductByQrCode(data.getStringExtra("resultKey"));
+                Log.e("TAG", "onActivityResult: Data from AddSale "+data.getStringExtra("resultKey") );
             }
         } else if (requestCode == gallery_req_code && resultCode == RESULT_OK) {
             if (data != null) {

@@ -67,6 +67,9 @@ public class CheckoutModel {
         @SerializedName("product_qty")
         @Expose
         private String productQty;
+        @SerializedName("single_product_price")
+        @Expose
+        private String single_product_price;
         @SerializedName("specification_id")
         @Expose
         private String specificationId;
@@ -142,6 +145,15 @@ public class CheckoutModel {
         @SerializedName("product_offer")
         @Expose
         private ProductOffer productOffer;
+
+
+        public String getSingle_product_price() {
+            return single_product_price;
+        }
+
+        public void setSingle_product_price(String single_product_price) {
+            this.single_product_price = single_product_price;
+        }
 
         public String getCartId() {
             return cartId;
