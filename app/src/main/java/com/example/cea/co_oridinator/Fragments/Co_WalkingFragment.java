@@ -93,7 +93,7 @@ public class Co_WalkingFragment extends Fragment implements OnItemDelete {
 
         final SearchableSpinner searchableSpinner = new SearchableSpinner(activity);
         //Optional Parameters
-        searchableSpinner.setWindowTitle("SEARCHABLE SPINNER");
+        searchableSpinner.setWindowTitle("Search Product");
 
         //Setting up list items for spinner
         searchableSpinner.setSpinnerListItems(productListNames);
@@ -470,7 +470,8 @@ public class Co_WalkingFragment extends Fragment implements OnItemDelete {
                                     data2.getProductTaxAmount(),
                                     data2.getProductFinalAmount(),
                                     data2.getSpecificationName(),
-                                    data2.getProductDiscount());
+                                    data2.getProductDiscount(),
+                                    data2.getProductOffer());
 
                             selectedProduct.size();
                             boolean isAdded = false;

@@ -6,12 +6,18 @@ public class BaseUrls {
 
 
     //Octa
-    public static final String URL = "https://ceaindiahub.in/octa/webservice/api/";
-    public static final String ImageBaseUrl = "https://ceaindiahub.in/octa/";
-
-    //Test
+//    public static final String URL = "https://ceaindiahub.in/octa/webservice/api/";
+//    public static final String ImageBaseUrl = "https://ceaindiahub.in/octa/";
+//
+//    //Test
 //    public static final String URL = "https://ceaindiahub.in/test/webservice/api/";
 //    public static final String ImageBaseUrl = "https://ceaindiahub.in/test/";
+
+
+    //Live
+    public static final String URL = "https://ceaindiahub.in/webservice/api/";
+    public static final String ImageBaseUrl = "https://ceaindiahub.in/";
+
     public static final String login = "login";
     public static final String signup = "signup";
     public static final String checkMobileEmailAddress = "checkMobileEmailAddress";

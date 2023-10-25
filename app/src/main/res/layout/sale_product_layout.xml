@@ -21,7 +21,7 @@
             android:gravity="start"
             android:text="Product Name"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
 
         <View
@@ -40,7 +40,7 @@
             android:gravity="center"
             android:text="MOP"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
 
         <View
@@ -58,7 +58,7 @@
             android:gravity="center"
             android:text="MRP"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
 
         <View
@@ -76,7 +76,7 @@
             android:gravity="center"
             android:text="Offer"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
 
         <View
@@ -97,7 +97,7 @@
             android:inputType="number"
             android:text="Discount "
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
 
         <View
@@ -116,7 +116,7 @@
             android:gravity="center"
             android:text="Total"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_8sdp"
             android:textStyle="bold" />
         
     </LinearLayout>

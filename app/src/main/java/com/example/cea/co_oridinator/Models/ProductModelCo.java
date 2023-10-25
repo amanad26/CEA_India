@@ -56,7 +56,7 @@ public class ProductModelCo {
         String originalPrice ="0" ;
 
 
-        public Datum(String stockId, String firmId, String purchaseInvoiceNo, String commonStatus, Object purchaseStatus, Object storeStatus, String stockCreatedDate, Object purchaseReturnDate, Object storeAssignDate, Object storeReturnDate, String saleCreatedDate, String saleReturnDate, String vendorId, String productId, String productName, String productType, String productSubType, String showAppStatus, String pincodeNumber, String categoryId, String categoryIdLevel, String purchaseId, String purchaseProductId, String productQrcode, String productPrice, String productSalePrice, String productMinSalePrice, String productMaxDiscount, String productSupportNo, String brandId, String modelId, String productSpecification, Object productServices, String productTax, String productHsn, String productQty, String storeId, String stockOutId, String saleUniqueInvoiceNo, String saleInvoicePath, String saleId, String saleProductId, String returnId, String isPrinted, String bookingUniqueInvoiceNo, String invoiceNo, String bookingId, String saleBookingType, String productDetailJson, String productMop, String productSerialNo, String productTaxAmount, String productFinalAmount, String specificationName, String productDiscount) {
+        public Datum(String stockId, String firmId, String purchaseInvoiceNo, String commonStatus, Object purchaseStatus, Object storeStatus, String stockCreatedDate, Object purchaseReturnDate, Object storeAssignDate, Object storeReturnDate, String saleCreatedDate, String saleReturnDate, String vendorId, String productId, String productName, String productType, String productSubType, String showAppStatus, String pincodeNumber, String categoryId, String categoryIdLevel, String purchaseId, String purchaseProductId, String productQrcode, String productPrice, String productSalePrice, String productMinSalePrice, String productMaxDiscount, String productSupportNo, String brandId, String modelId, String productSpecification, Object productServices, String productTax, String productHsn, String productQty, String storeId, String stockOutId, String saleUniqueInvoiceNo, String saleInvoicePath, String saleId, String saleProductId, String returnId, String isPrinted, String bookingUniqueInvoiceNo, String invoiceNo, String bookingId, String saleBookingType, String productDetailJson, String productMop, String productSerialNo, String productTaxAmount, String productFinalAmount, String specificationName, String productDiscount, String product_offer) {
             this.stockId = stockId;
             this.firmId = firmId;
             this.purchaseInvoiceNo = purchaseInvoiceNo;
@@ -112,6 +112,7 @@ public class ProductModelCo {
             this.productFinalAmount = productFinalAmount;
             this.specificationName = specificationName;
             this.productDiscount = productDiscount;
+            this.product_offer = product_offer;
         }
 
         public Datum(String stockId, String productId, String productName, String productSalePrice, String productMaxDiscount, String productMop, String productFinalAmount) {

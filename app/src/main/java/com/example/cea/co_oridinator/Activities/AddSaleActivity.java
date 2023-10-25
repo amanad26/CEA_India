@@ -600,7 +600,6 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                                     ProductModelCo.Datum current = response.body().getData().get(i);
 
                                     current.setProductMrp(current.getProductFinalAmount());
-
                                     allProductList.add(current);
                                 }
 
@@ -636,7 +635,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
     private void showSearchableSpinner() {
         final SearchableSpinner searchableSpinner = new SearchableSpinner(this);
         //Optional Parameters
-        searchableSpinner.setWindowTitle("SEARCHABLE SPINNER");
+        searchableSpinner.setWindowTitle("Search Product");
         searchableSpinner.setShowKeyboardByDefault(false);
 
         //Setting up list items for spinner
@@ -671,7 +670,6 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
 
             }
         });
-
 
         searchableSpinner.show();
     }
@@ -718,6 +716,8 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                     if (response.body() != null)
                         if (response.body().getStatus() == 1) {
                             QrCodeProductModel.Datum data2 = response.body().getData().get(0);
+
+
                             ProductModelCo.Datum data = new ProductModelCo.Datum(
                                     data2.getStockId(),
                                     data2.getFirmId(),
@@ -773,7 +773,10 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
                                     data2.getProductTaxAmount(),
                                     data2.getProductFinalAmount(),
                                     data2.getSpecificationName(),
-                                    data2.getProductDiscount());
+                                    data2.getProductDiscount(),
+                                    data2.getProductOffer());
+                                   data.setProductMrp(data2.getProductFinalAmount()
+                               );
 
                             selectedProduct.size();
                             boolean isAdded = false;
@@ -801,7 +804,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
 
             @Override
             public void onFailure(@NonNull Call<QrCodeProductModel> call, @NonNull Throwable t) {
-                Log.e("TAG", "onFailure: Error "+t.toString() );
+                Log.e("TAG", "onFailure: Error " + t.toString());
                 Toast.makeText(activity, "Failed...", Toast.LENGTH_SHORT).show();
                 pd.dismiss();
             }
@@ -864,7 +867,7 @@ public class AddSaleActivity extends AppCompatActivity implements AddWalkingSpin
             if (data != null) {
 //             getProductByQrCode("16916643662");
                 getProductByQrCode(data.getStringExtra("resultKey"));
-                Log.e("TAG", "onActivityResult: Data from AddSale "+data.getStringExtra("resultKey") );
+                Log.e("TAG", "onActivityResult: Data from AddSale " + data.getStringExtra("resultKey"));
             }
         } else if (requestCode == gallery_req_code && resultCode == RESULT_OK) {
             if (data != null) {
